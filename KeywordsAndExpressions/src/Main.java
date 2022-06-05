@@ -10,7 +10,7 @@ public class Main {
         int score = 100;
         if (score > 99) {
             System.out.println("You got the high score");
-            score = 0
+            score = 0;
         }
     }
 }

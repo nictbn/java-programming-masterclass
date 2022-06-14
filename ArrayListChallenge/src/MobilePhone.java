@@ -22,7 +22,7 @@ public class MobilePhone {
         return true;
     }
 
-    public boolean addNEwContact(Contact contact) {
+    public boolean addNewContact(Contact contact) {
         if (findContact(contact.getName())  >= 0) {
             System.out.println("Contact is already on file");
             return  false;
@@ -43,13 +43,6 @@ public class MobilePhone {
             }
         }
         return -1;
-    }
-
-    public String queryContact(Contact contact) {
-        if (findContact(contact) >= 0) {
-            return contact.getName();
-        }
-        return null;
     }
 
     public Contact queryContact(String name) {

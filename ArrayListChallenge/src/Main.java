@@ -61,7 +61,7 @@ public class Main {
         System.out.println("Enter new contact phone number: ");
         String phoneNumber = scanner.nextLine();
         Contact contact = Contact.createContact(contactName, phoneNumber);
-        if (mobilePhone.addNEwContact(contact)) {
+        if (mobilePhone.addNewContact(contact)) {
             System.out.println("New contact added: " + contactName + ", phone = " + phoneNumber);
         } else {
             System.out.println("Cannot add, " + contactName + " already on file.");

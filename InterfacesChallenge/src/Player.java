@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements  Saveable {
+public class Player implements Saveable {
     private String name;
-    private int hitpoints;
+    private int hitPoints;
     private int strength;
     private String weapon;
 
-    public Player(String name, int hitpoints, int strength) {
+    public Player(String name, int hitPoints, int strength) {
         this.name = name;
-        this.hitpoints = hitpoints;
+        this.hitPoints = hitPoints;
         this.strength = strength;
         this.weapon = "Sword";
     }
@@ -18,7 +18,7 @@ public class Player implements  Saveable {
     public List<String> write() {
         List<String> values = new ArrayList<>();
         values.add(0, name);
-        values.add(1, Integer.toString(hitpoints));
+        values.add(1, Integer.toString(hitPoints));
         values.add(2, Integer.toString(strength));
         values.add(3, weapon);
         return values;
@@ -28,7 +28,7 @@ public class Player implements  Saveable {
     public void read(List<String> savedValues) {
         if (savedValues != null && savedValues.size() > 0) {
             name = savedValues.get(0);
-            hitpoints = Integer.parseInt(savedValues.get(1));
+            hitPoints = Integer.parseInt(savedValues.get(1));
             strength = Integer.parseInt(savedValues.get(2));
             weapon = savedValues.get(3);
         }
@@ -42,12 +42,12 @@ public class Player implements  Saveable {
         this.name = name;
     }
 
-    public int getHitpoints() {
-        return hitpoints;
+    public int getHitPoints() {
+        return hitPoints;
     }
 
-    public void setHitpoints(int hitpoints) {
-        this.hitpoints = hitpoints;
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
     }
 
     public int getStrength() {
@@ -70,7 +70,7 @@ public class Player implements  Saveable {
     public String toString() {
         return "Player{" +
                 "name='" + name + '\'' +
-                ", hitpoints=" + hitpoints +
+                ", hitPoints=" + hitPoints +
                 ", strength=" + strength +
                 ", weapon='" + weapon + '\'' +
                 '}';

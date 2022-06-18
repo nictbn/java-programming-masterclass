@@ -8,7 +8,7 @@ public class Main {
         System.out.println(tim);
         saveObject(tim);
 
-        tim.setHitpoints(8);
+        tim.setHitPoints(8);
         System.out.println(tim);
         tim.setWeapon("Stormbringer");
         saveObject(tim);

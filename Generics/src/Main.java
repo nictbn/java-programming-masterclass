@@ -13,8 +13,8 @@ public class Main {
     }
 
     public static void printDoubled(ArrayList<Integer> n) {
-        for (Object i : n) {
-            System.out.println((Integer) i * 2);
+        for (int i : n) {
+            System.out.println(i * 2);
         }
     }
 }

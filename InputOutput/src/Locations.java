@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,6 +7,30 @@ import java.util.Set;
 
 public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new HashMap<>();
+
+    public static void main(String[] args) {
+        FileWriter locationsFileWriter = null;
+        try {
+            locationsFileWriter = new FileWriter("locations.txt");
+            for (Location location : locations.values()) {
+                locationsFileWriter.write(location.getLocationID() + "," + location.getDescription() + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("In catch block");
+            e.printStackTrace();
+        } finally {
+            System.out.println("In finally block");
+            try {
+                if (locationsFileWriter != null) {
+                    System.out.println("Attempting to close locations file");
+                    locationsFileWriter.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 
     static {
         locations.put(0, new Location(0, "You are sitting in front of a computer learning Java"));

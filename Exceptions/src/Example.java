@@ -4,8 +4,14 @@ import java.util.Scanner;
 
 public class Example {
     public static void main(String[] args) {
-        int result = divide();
-        System.out.println(result);
+        try {
+            int result = divide();
+            System.out.println(result);
+        } catch (ArithmeticException | NoSuchElementException e) {
+            System.out.println(e.toString());
+            System.out.println("Unable to perform division, autopilot shutting down");
+        }
+
     }
 
     private static int divide() {
@@ -13,16 +19,13 @@ public class Example {
         try {
             x = getInt();
             y = getInt();
-        } catch (NoSuchElementException e) {
-            throw new ArithmeticException("No suitable input");
-        }
-        System.out.println("x is " + x + ", y is " + y);
-        try {
+            System.out.println("x is " + x + ", y is " + y);
             return x / y;
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException("No suitable input");
         } catch (ArithmeticException e) {
             throw new ArithmeticException("attempt to divide by 0");
         }
-
     }
 
     private static int getInt() {
@@ -35,7 +38,6 @@ public class Example {
                 s.nextLine();
                 System.out.println("Please enter a number using only the digits 0 to 9 ");
             }
-            return s.nextInt();
         }
     }
 }

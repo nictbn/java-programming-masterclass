@@ -1,3 +1,4 @@
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -35,6 +36,28 @@ public class Locations implements Map<Integer, Location> {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+
+        try {
+            scanner = new Scanner(new BufferedReader(new FileReader("directions.txt")));
+            scanner.useDelimiter(",");
+            while(scanner.hasNextLine()) {
+                int location = scanner.nextInt();
+                scanner.skip(scanner.delimiter());
+                String direction = scanner.next();
+                scanner.skip(scanner.delimiter());
+                String dest = scanner.nextLine();
+                int destination = Integer.parseInt(dest);
+                System.out.println(location + ": " + direction + ": " + destination);
+                Location locationObject = locations.get(location);
+                locationObject.addExit(direction, destination);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             if (scanner != null) {
                 scanner.close();
             }

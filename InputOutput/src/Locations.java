@@ -24,7 +24,7 @@ public class Locations implements Map<Integer, Location> {
     static {
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new FileReader("locations.txt"));
+            scanner = new Scanner(new FileReader("locations_big.txt"));
             scanner.useDelimiter(",");
             while ((scanner.hasNextLine())) {
                 int location = scanner.nextInt();
@@ -42,7 +42,7 @@ public class Locations implements Map<Integer, Location> {
         }
 
         try {
-            scanner = new Scanner(new BufferedReader(new FileReader("directions.txt")));
+            scanner = new Scanner(new BufferedReader(new FileReader("directions_big.txt")));
             scanner.useDelimiter(",");
             while(scanner.hasNextLine()) {
                 String input = scanner.nextLine();

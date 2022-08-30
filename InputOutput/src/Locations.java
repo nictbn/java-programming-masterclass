@@ -45,12 +45,11 @@ public class Locations implements Map<Integer, Location> {
             scanner = new Scanner(new BufferedReader(new FileReader("directions.txt")));
             scanner.useDelimiter(",");
             while(scanner.hasNextLine()) {
-                int location = scanner.nextInt();
-                scanner.skip(scanner.delimiter());
-                String direction = scanner.next();
-                scanner.skip(scanner.delimiter());
-                String dest = scanner.nextLine();
-                int destination = Integer.parseInt(dest);
+                String input = scanner.nextLine();
+                String[] data = input.split(",");
+                int location = Integer.parseInt(data[0]);
+                String direction = data[1];
+                int destination = Integer.parseInt(data[2]);
                 System.out.println(location + ": " + direction + ": " + destination);
                 Location locationObject = locations.get(location);
                 locationObject.addExit(direction, destination);

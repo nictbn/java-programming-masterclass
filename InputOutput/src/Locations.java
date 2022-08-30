@@ -1,59 +1,44 @@
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new HashMap<>();
 
-    public static void main(String[] args) {
-        FileWriter locationsFileWriter = null;
-        try {
-            locationsFileWriter = new FileWriter("locations.txt");
+    public static void main(String[] args) throws IOException {
+        try (
+                FileWriter locationsFileWriter = new FileWriter("locations.txt");
+                FileWriter directionsFileWriter = new FileWriter("directions.txt")
+        ) {
             for (Location location : locations.values()) {
                 locationsFileWriter.write(location.getLocationID() + "," + location.getDescription() + "\n");
-            }
-        } catch (IOException e) {
-            System.out.println("In catch block");
-            e.printStackTrace();
-        } finally {
-            System.out.println("In finally block");
-            try {
-                if (locationsFileWriter != null) {
-                    System.out.println("Attempting to close locations file");
-                    locationsFileWriter.close();
+                for (String direction : location.getExits().keySet()) {
+                    directionsFileWriter.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-
         }
     }
 
     static {
-        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java"));
-        locations.put(1, new Location(1, "You are standing at the end of a road before a small brick building"));
-        locations.put(2, new Location(2, "You are at the top of a hill"));
-        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring"));
-        locations.put(4, new Location(4, "You are in a valley beside a stream"));
-        locations.put(5, new Location(5, "You are in the forest"));
-
-        locations.get(1).addExit("W", 2);
-        locations.get(1).addExit("E", 3);
-        locations.get(1).addExit("S", 4);
-        locations.get(1).addExit("N", 5);
-
-        locations.get(2).addExit("N", 5);
-
-        locations.get(3).addExit("W", 1);
-
-        locations.get(4).addExit("N", 1);
-        locations.get(4).addExit("W", 2);
-
-        locations.get(5).addExit("S", 1);
-        locations.get(5).addExit("W", 2);
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new FileReader("locations.txt"));
+            scanner.useDelimiter(",");
+            while ((scanner.hasNextLine())) {
+                int location = scanner.nextInt();
+                scanner.skip(scanner.delimiter());
+                String description = scanner.nextLine();
+                System.out.println("Imported location: " + location + ":" + description);
+                Map<String, Integer> tempExit = new HashMap<>();
+                locations.put(location, new Location(location, description, tempExit));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
     }
 
     @Override

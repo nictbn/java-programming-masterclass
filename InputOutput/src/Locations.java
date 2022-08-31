@@ -5,15 +5,18 @@ public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new LinkedHashMap<>();
 
     public static void main(String[] args) throws IOException {
-        try (
-                BufferedWriter locationsFileWriter = new BufferedWriter(new FileWriter("locations.txt"));
-                BufferedWriter directionsFileWriter = new BufferedWriter(new FileWriter("directions.txt"))
-        ) {
+        try(DataOutputStream locationsFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("locations,dat")))) {
             for (Location location : locations.values()) {
-                locationsFileWriter.write(location.getLocationID() + "," + location.getDescription() + "\n");
+                locationsFile.writeInt(location.getLocationID());
+                locationsFile.writeUTF(location.getDescription());
+                System.out.println("Writing location " + location.getLocationID() + " : " + location.getDescription());
+                System.out.println("Writing " + (location.getExits().size()-1) + " exits.");
+                locationsFile.writeInt(location.getExits().size() - 1);
                 for (String direction : location.getExits().keySet()) {
                     if (!direction.equalsIgnoreCase("Q")) {
-                        directionsFileWriter.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
+                        System.out.println("\t\t" + direction + "," + location.getExits().get(direction));
+                        locationsFile.writeUTF(direction);
+                        locationsFile.writeInt(location.getExits().get(direction));
                     }
                 }
             }

@@ -1,28 +1,27 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Locations implements Map<Integer, Location> {
-    private static Map<Integer, Location> locations = new HashMap<>();
+    private static Map<Integer, Location> locations = new LinkedHashMap<>();
 
     public static void main(String[] args) throws IOException {
         try (
-                FileWriter locationsFileWriter = new FileWriter("locations.txt");
-                FileWriter directionsFileWriter = new FileWriter("directions.txt")
+                BufferedWriter locationsFileWriter = new BufferedWriter(new FileWriter("locations.txt"));
+                BufferedWriter directionsFileWriter = new BufferedWriter(new FileWriter("directions.txt"))
         ) {
             for (Location location : locations.values()) {
                 locationsFileWriter.write(location.getLocationID() + "," + location.getDescription() + "\n");
                 for (String direction : location.getExits().keySet()) {
-                    directionsFileWriter.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
+                    if (!direction.equalsIgnoreCase("Q")) {
+                        directionsFileWriter.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
+                    }
                 }
             }
         }
     }
 
     static {
-        try (Scanner scanner = new Scanner(new FileReader("locations_big.txt"))) {
+        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader("locations_big.txt")))) {
             scanner.useDelimiter(",");
             while ((scanner.hasNextLine())) {
                 int location = scanner.nextInt();

@@ -36,12 +36,10 @@ public class Main {
             }
             intBuffer.flip();
             numBytesRead = channel.read(intBuffer);
-            intBuffer.flip();
-            System.out.println(intBuffer.getInt());
+            System.out.println(intBuffer.getInt(0));
             intBuffer.flip();
             numBytesRead=channel.read(intBuffer);
-            intBuffer.flip();
-            System.out.println(intBuffer.getInt());
+            System.out.println(intBuffer.getInt(0));
             channel.close();
             ra.close();
         } catch (IOException e) {

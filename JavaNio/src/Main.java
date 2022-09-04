@@ -6,29 +6,42 @@ import java.nio.channels.FileChannel;
 
 public class Main {
     public static void main(String[] args) {
-        try(FileOutputStream binFile = new FileOutputStream("data.dat");
-            FileChannel binChannel = binFile.getChannel();) {
+        try (FileOutputStream binFile = new FileOutputStream("data.dat");
+             FileChannel binChannel = binFile.getChannel();) {
             ByteBuffer buffer = ByteBuffer.allocate(100);
             byte[] outputBytes = "Hello World!".getBytes();
+            long int1Pos = outputBytes.length;
+            buffer.put(outputBytes);
+            buffer.putInt(245);
+            long int2pos = int1Pos + Integer.BYTES;
+            buffer.putInt(-98765);
             byte[] outputBytes2 = "Nice to meet you".getBytes();
-            buffer.put(outputBytes).putInt(245).putInt(-98765).put(outputBytes2).putInt(1000);
+            buffer.put(outputBytes2);
+            long int3Pos = int2pos + Integer.BYTES + outputBytes2.length;
+            buffer.putInt(1000);
             buffer.flip();
             binChannel.write(buffer);
 
             RandomAccessFile ra = new RandomAccessFile("data.dat", "rwd");
             FileChannel channel = ra.getChannel();
-            ByteBuffer readBuffer = ByteBuffer.allocate(100);
+
+            ByteBuffer readBuffer = ByteBuffer.allocate(Integer.BYTES);
+            channel.position(int3Pos);
             channel.read(readBuffer);
             readBuffer.flip();
-            byte[] inputString = new byte[outputBytes.length];
-            readBuffer.get(inputString);
-            System.out.println("inputString = " + new String(inputString));
-            System.out.println("int1 = " + readBuffer.getInt());
-            System.out.println("int2 = " + readBuffer.getInt());
-            byte[] inputString2 = new byte[outputBytes2.length];
-            readBuffer.get(inputString2);
-            System.out.println("inputString2 = " + new String(inputString2));
             System.out.println("int3 = " + readBuffer.getInt());
+
+            readBuffer.flip();
+            channel.position(int2pos);
+            channel.read(readBuffer);
+            readBuffer.flip();
+            System.out.println("int2 = " + readBuffer.getInt());
+
+            readBuffer.flip();
+            channel.position(int1Pos);
+            channel.read(readBuffer);
+            readBuffer.flip();
+            System.out.println("int1 = " + readBuffer.getInt());
         } catch (IOException e) {
             e.printStackTrace();
         }

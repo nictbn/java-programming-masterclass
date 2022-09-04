@@ -9,7 +9,9 @@ public class Main {
         try(FileOutputStream binFile = new FileOutputStream("data.dat");
             FileChannel binChannel = binFile.getChannel();) {
             byte[] outputBytes = "Hello World!".getBytes();
-            ByteBuffer buffer = ByteBuffer.wrap(outputBytes);
+            ByteBuffer buffer = ByteBuffer.allocate(outputBytes.length);
+            buffer.put(outputBytes);
+            buffer.flip();
             int numBytes = binChannel.write(buffer);
             System.out.println("numBytes written was: " + numBytes);
 

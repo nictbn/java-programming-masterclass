@@ -8,44 +8,31 @@ public class Main {
     public static void main(String[] args) {
         try(FileOutputStream binFile = new FileOutputStream("data.dat");
             FileChannel binChannel = binFile.getChannel();) {
+            ByteBuffer buffer = ByteBuffer.allocate(100);
             byte[] outputBytes = "Hello World!".getBytes();
-            ByteBuffer buffer = ByteBuffer.allocate(outputBytes.length);
             buffer.put(outputBytes);
+            buffer.putInt(245);
+            buffer.putInt(-98765);
+            byte[] outputBytes2 = "Nice to meet you".getBytes();
+            buffer.put(outputBytes2);
+            buffer.putInt(1000);
             buffer.flip();
-            int numBytes = binChannel.write(buffer);
-            System.out.println("numBytes written was: " + numBytes);
-
-            ByteBuffer intBuffer = ByteBuffer.allocate(Integer.BYTES);
-            intBuffer.putInt(245);
-            intBuffer.flip();
-            numBytes = binChannel.write(intBuffer);
-            System.out.println("numBytes written was: " + numBytes);
-
-            intBuffer.flip();
-            intBuffer.putInt(-98765);
-            intBuffer.flip();
-            numBytes = binChannel.write(intBuffer);
-            System.out.println("numBytes written was: " + numBytes);
+            binChannel.write(buffer);
 
             RandomAccessFile ra = new RandomAccessFile("data.dat", "rwd");
             FileChannel channel = ra.getChannel();
-            outputBytes[0] = 'a';
-            outputBytes[1] = 'b';
-            buffer.flip();
-            long numBytesRead  = channel.read(buffer);
-            if (buffer.hasArray()) {
-                System.out.println("byte buffer = " + new String(buffer.array()));
-            }
-            intBuffer.flip();
-            numBytesRead = channel.read(intBuffer);
-            System.out.println(intBuffer.getInt(0));
-            intBuffer.flip();
-            numBytesRead=channel.read(intBuffer);
-            intBuffer.flip();
-            System.out.println(intBuffer.getInt(0));
-            System.out.println(intBuffer.getInt());
-            channel.close();
-            ra.close();
+            ByteBuffer readBuffer = ByteBuffer.allocate(100);
+            channel.read(readBuffer);
+            readBuffer.flip();
+            byte[] inputString = new byte[outputBytes.length];
+            readBuffer.get(inputString);
+            System.out.println("inputString = " + new String(inputString));
+            System.out.println("int1 = " + readBuffer.getInt());
+            System.out.println("int2 = " + readBuffer.getInt());
+            byte[] inputString2 = new byte[outputBytes2.length];
+            readBuffer.get(inputString2);
+            System.out.println("inputString2 = " + new String(inputString2));
+            System.out.println("int3 = " + readBuffer.getInt());
         } catch (IOException e) {
             e.printStackTrace();
         }

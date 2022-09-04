@@ -39,7 +39,9 @@ public class Main {
             System.out.println(intBuffer.getInt(0));
             intBuffer.flip();
             numBytesRead=channel.read(intBuffer);
+            intBuffer.flip();
             System.out.println(intBuffer.getInt(0));
+            System.out.println(intBuffer.getInt());
             channel.close();
             ra.close();
         } catch (IOException e) {

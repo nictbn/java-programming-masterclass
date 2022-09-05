@@ -5,7 +5,7 @@ import java.nio.file.*;
 public class Main {
     public static void main(String[] args) {
         DirectoryStream.Filter<Path> filter = Files::isRegularFile;
-        Path directory = FileSystems.getDefault().getPath("Directories/FileTree/Dir2");
+        Path directory = FileSystems.getDefault().getPath("Directories" + File.separator + "FileTree" + File.separator + "Dir2");
         try (DirectoryStream<Path> contents = Files.newDirectoryStream(directory, filter)) {
             for (Path file : contents) {
                 System.out.println(file.getFileName());
@@ -13,5 +13,9 @@ public class Main {
         } catch (IOException | DirectoryIteratorException e) {
             System.out.println(e.getMessage());
         }
+        String separator = File.separator;
+        System.out.println(separator);
+        separator = FileSystems.getDefault().getSeparator();
+        System.out.println(separator);
     }
 }

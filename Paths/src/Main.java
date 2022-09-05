@@ -2,14 +2,12 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            Path fileToMove = FileSystems.getDefault().getPath("Paths", "Examples", "file1.txt");
-            Path destination = FileSystems.getDefault().getPath("Paths", "Examples", "file2.txt");
-            Files.move(fileToMove, destination);
+            Path fileToDelete = FileSystems.getDefault().getPath("Paths", "Examples", "Dir1", "file1copy.txt");
+            Files.deleteIfExists(fileToDelete);
 //            Path sourceFile = FileSystems.getDefault().getPath("Paths", "Examples", "file1.txt");
 //            Path copyFile = FileSystems.getDefault().getPath("Paths", "Examples", "file1copy.txt");
 //            Files.copy(sourceFile, copyFile, StandardCopyOption.REPLACE_EXISTING);

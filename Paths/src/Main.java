@@ -6,15 +6,8 @@ import java.nio.file.Path;
 public class Main {
     public static void main(String[] args) {
         try {
-            Path fileToDelete = FileSystems.getDefault().getPath("Paths", "Examples", "Dir1", "file1copy.txt");
-            Files.deleteIfExists(fileToDelete);
-//            Path sourceFile = FileSystems.getDefault().getPath("Paths", "Examples", "file1.txt");
-//            Path copyFile = FileSystems.getDefault().getPath("Paths", "Examples", "file1copy.txt");
-//            Files.copy(sourceFile, copyFile, StandardCopyOption.REPLACE_EXISTING);
-//
-//            sourceFile = FileSystems.getDefault().getPath("Paths", "Examples", "Dir1");
-//            copyFile = FileSystems.getDefault().getPath("Examples", "Dir4");
-//            Files.copy(sourceFile, copyFile, StandardCopyOption.REPLACE_EXISTING);
+            Path fieToCreate = FileSystems.getDefault().getPath("Paths","Examples", "file3.txt");
+            Files.createFile(fieToCreate);
         } catch (IOException e) {
             e.printStackTrace();
         }

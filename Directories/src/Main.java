@@ -1,26 +1,17 @@
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(" Walking tree for dir 2 ");
+        Path dir2Path = FileSystems.getDefault().getPath("Directories", "FileTree" + File.separator + "Dir2");
         try {
-            Path tempFile = Files.createTempFile("myapp", ".appext");
-            System.out.println("Temporary file path = " + tempFile.toAbsolutePath());
+            Files.walkFileTree(dir2Path, new PrintNames());
         } catch (IOException e) {
             System.out.println(e.getMessage());
-        }
-
-        Iterable<FileStore> stores = FileSystems.getDefault().getFileStores();
-        for (FileStore store : stores) {
-            System.out.println("Volume name / Drive letter = " + store);
-            System.out.println("File store = " + store.name());
-        }
-
-        System.out.println("********************************************************");
-        Iterable<Path> rootPaths = FileSystems.getDefault().getRootDirectories();
-        for (Path path : rootPaths) {
-            System.out.println(path);
         }
     }
 }

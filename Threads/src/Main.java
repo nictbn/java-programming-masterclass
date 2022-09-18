@@ -12,6 +12,7 @@ public class Main {
         }.start();
         Thread myRunnableThread = new Thread(new MyRunnable());
         myRunnableThread.start();
+        anotherThread.interrupt();
         Thread mySecondRunnableThread = new Thread(new MyRunnable() {
             @Override
             public void run() {

@@ -2,7 +2,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(ThreadColor.ANSI_PURPLE + "Hello from the main thread.");
         Thread anotherThread = new AnotherThread();
-        anotherThread.start();
+        anotherThread.setName("== Another THread == ");
+        anotherThread.run();
 
         new Thread() {
             public void run() {

@@ -12,11 +12,16 @@ public class Main {
         }.start();
         Thread myRunnableThread = new Thread(new MyRunnable());
         myRunnableThread.start();
-        anotherThread.interrupt();
         Thread mySecondRunnableThread = new Thread(new MyRunnable() {
             @Override
             public void run() {
                 System.out.println(ThreadColor.ANSI_RED + "Hello from the anonymous class's implementation of run");
+                try {
+                    anotherThread.join();
+                    System.out.println(ThreadColor.ANSI_RED + "AnotherThread terminated so I'm running again");
+                } catch (InterruptedException e) {
+                    System.out.println(ThreadColor.ANSI_RED + "I couldn't wait after all. I was interrupted");
+                }
             }
         });
         mySecondRunnableThread.start();

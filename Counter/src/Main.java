@@ -13,6 +13,7 @@ public class Main {
 }
 
 class Countdown {
+    private int i;
     public void doCountdown() {
         String color;
         String threadName = Thread.currentThread().getName();
@@ -27,14 +28,14 @@ class Countdown {
                 color = ThreadColor.ANSI_GREEN;
         }
 
-        for (int i = 10; i > 0 ; i--) {
+        for (i = 10; i > 0 ; i--) {
             System.out.println(color + threadName + ": i = " + i);
         }
     }
 }
 
 class CountdownThread extends Thread {
-    private Countdown threadCountdown;
+    private final Countdown threadCountdown;
 
     public CountdownThread(Countdown countdown) {
         threadCountdown = countdown;

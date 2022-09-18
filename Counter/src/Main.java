@@ -29,7 +29,7 @@ class Countdown {
                 color = ThreadColor.ANSI_GREEN;
         }
 
-        synchronized(color) {
+        synchronized(this) {
             for (i = 10; i > 0; i--) {
                 System.out.println(color + threadName + ": i = " + i);
             }

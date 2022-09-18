@@ -3,7 +3,7 @@ public class Main {
         System.out.println(ThreadColor.ANSI_PURPLE + "Hello from the main thread.");
         Thread anotherThread = new AnotherThread();
         anotherThread.setName("== Another THread == ");
-        anotherThread.run();
+        anotherThread.start();
 
         new Thread() {
             public void run() {

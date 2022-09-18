@@ -1,11 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        Countdown countdown1 = new Countdown();
-        Countdown countdown2 = new Countdown();
-        CountdownThread t1 = new CountdownThread(countdown1);
+        Countdown countdown = new Countdown();
+        CountdownThread t1 = new CountdownThread(countdown);
         t1.setName("Thread 1");
 
-        CountdownThread t2 = new CountdownThread(countdown2);
+        CountdownThread t2 = new CountdownThread(countdown);
         t2.setName("Thread 2");
 
         t1.start();
@@ -15,7 +14,8 @@ public class Main {
 
 class Countdown {
     private int i;
-    public void doCountdown() {
+
+    public synchronized void doCountdown() {
         String color;
         String threadName = Thread.currentThread().getName();
         switch (threadName) {

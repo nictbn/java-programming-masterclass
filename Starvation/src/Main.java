@@ -1,5 +1,7 @@
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Main {
-    private static Object lock = new Object();
+    private static ReentrantLock lock = new ReentrantLock(true);
 
     public static void main(String[] args) {
         Thread t1 = new Thread(new Worker(ThreadColor.ANSI_RED), "Priority 10");
@@ -8,11 +10,11 @@ public class Main {
         Thread t4 = new Thread(new Worker(ThreadColor.ANSI_CYAN), "Priority 4");
         Thread t5 = new Thread(new Worker(ThreadColor.ANSI_PURPLE), "Priority 2");
 
-//        t1.setPriority(10);
-//        t2.setPriority(8);
-//        t3.setPriority(6);
-//        t4.setPriority(4);
-//        t5.setPriority(2);
+        t1.setPriority(10);
+        t2.setPriority(8);
+        t3.setPriority(6);
+        t4.setPriority(4);
+        t5.setPriority(2);
 
         t3.start();
         t2.start();
@@ -32,10 +34,13 @@ public class Main {
         @Override
         public void run() {
             for (int i = 0; i < 100; i++) {
-                synchronized (lock) {
+                lock.lock();
+                try {
                     System.out.format(threadColor + "%s: runCount = %d%n", Thread.currentThread().getName(), runCount++);
 
                     // Critical section should be here
+                } finally {
+                    lock.unlock();
                 }
             }
         }

@@ -1,9 +1,21 @@
 public class Main {
     public static void main(String[] args) {
-        PolitePerson jane = new PolitePerson("Jane");
-        PolitePerson john = new PolitePerson("John");
-        jane.sayHello(john);
-        john.sayHello(jane);
+        final PolitePerson jane = new PolitePerson("Jane");
+        final PolitePerson john = new PolitePerson("John");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                jane.sayHello(john);
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                john.sayHello(jane);
+            }
+        }).start();
+
     }
 
     static class PolitePerson {

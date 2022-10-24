@@ -26,16 +26,11 @@ public class Controller {
                         "Mary Johnson",
                         "Bob McDonald"
                 );
-
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        listView.setItems(employees);
-                    }
-                });
                 return employees;
             }
         };
+
+        listView.itemsProperty().bind(task.valueProperty());
     }
 
     @FXML

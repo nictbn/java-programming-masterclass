@@ -46,6 +46,11 @@ public class Main {
             System.out.println(randomSupplier.get());
         }
 
+        employees.forEach(employee -> {
+            String lasName = employee.getName().substring(employee.getName().indexOf(' ') + 1);
+            System.out.println("Last Name is: " + lasName);
+        });
+
     }
 
     private static void printEmployeesByAge(List<Employee> employees,

@@ -19,11 +19,6 @@ public class HelloController {
     private Button clickMeButton;
 
     public void initialize() {
-        clickMeButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("You clicked me!");
-            }
-        });
+        clickMeButton.setOnAction(actionEvent -> System.out.println("You clicked me!"));
     }
 }

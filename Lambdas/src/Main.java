@@ -96,6 +96,7 @@ class AnotherClass {
         int i = 0;
         UpperConcat uc = (s1, s2) -> {
             System.out.println("The lambda expression's class is " + getClass().getSimpleName());
+            System.out.println("i in the lambda expression = " + i);
             String result = s1.toUpperCase() + s2.toUpperCase();
             return result;
         };

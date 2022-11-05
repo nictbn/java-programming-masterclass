@@ -1,4 +1,4 @@
-package Challenges1And2;
+package Challenges;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

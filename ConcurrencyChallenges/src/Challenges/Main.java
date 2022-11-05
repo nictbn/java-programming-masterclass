@@ -1,4 +1,4 @@
-package Challenges1And2;
+package Challenges;
 
 public class Main {
     public static void main(String[] args) {

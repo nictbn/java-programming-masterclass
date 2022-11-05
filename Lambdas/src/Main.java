@@ -13,10 +13,15 @@ public class Main {
         employees.add(jack);
         employees.add(snow);
 
-        for (Employee employee : employees) {
+        employees.forEach(employee -> {
             System.out.println(employee.getName());
-            new Thread(() -> System.out.println(employee.getAge())).start();
-        }
+            System.out.println(employee.getAge());
+        });
+
+//        for (Employee employee : employees) {
+//            System.out.println(employee.getName());
+//            new Thread(() -> System.out.println(employee.getAge())).start();
+//        }
 //        System.out.println("*************************");
 //        for (int i = 0; i < employees.size(); i++) {
 //            Employee employee = employees.get(i);

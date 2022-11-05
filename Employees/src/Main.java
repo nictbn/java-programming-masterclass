@@ -46,9 +46,12 @@ public class Main {
         BiFunction<String, Employee, String> concatAge = (String name, Employee employee) -> {
             return name.concat(" " + employee.getAge());
         };
-        
+
         String upperName = upperCase.apply(employees.get(0));
         System.out.println(concatAge.apply(upperName, employees.get(0)));
+
+        IntUnaryOperator incBy5 = i -> i + 5;
+        System.out.println(incBy5.applyAsInt(10));
     }
 
     private static String getAName(Function<Employee, String> getName, Employee employee) {

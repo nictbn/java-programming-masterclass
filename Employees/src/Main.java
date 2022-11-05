@@ -29,10 +29,14 @@ public class Main {
             }
         });
 
-        IntPredicate intp = i -> i > 15;
-        System.out.println(intp.test(10));
+        IntPredicate greaterThan15 = i -> i > 15;
+        IntPredicate lessThan100 = i -> i < 100;
+        System.out.println(greaterThan15.test(10));
         int a = 20;
-        System.out.println(intp.test(a + 5));
+        System.out.println(greaterThan15.test(a + 5));
+
+        System.out.println(greaterThan15.and(lessThan100).test(50));
+        System.out.println(greaterThan15.and(lessThan100).test(15));
 
     }
 

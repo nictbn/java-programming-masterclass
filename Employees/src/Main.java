@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,8 +41,9 @@ public class Main {
         System.out.println(greaterThan15.and(lessThan100).test(15));
 
         Random random = new Random();
+        Supplier<Integer> randomSupplier = () -> random.nextInt(1000);
         for (int i = 0; i < 10; i++) {
-            System.out.println(random.nextInt(1000));
+            System.out.println(randomSupplier.get());
         }
 
     }

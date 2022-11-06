@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -70,5 +71,11 @@ public class Main {
                 .filter(s -> s.startsWith("G"))
                 .sorted()
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+        Map<Integer, List<Employee>> groupedByAge = departments.stream()
+                .flatMap(department -> department.getEmployees().stream())
+                .collect(Collectors.groupingBy(employee -> employee.getAge()));
+
+        
     }
 }

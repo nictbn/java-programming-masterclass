@@ -64,5 +64,11 @@ public class Main {
         for (String s : sortedGNumbers) {
             System.out.println(s);
         }
+
+        List<String> sortedGNumbers2 = someBingoNumbers.stream()
+                .map(String::toUpperCase)
+                .filter(s -> s.startsWith("G"))
+                .sorted()
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
     }
 }

@@ -1,6 +1,6 @@
 import java.util.function.Function;
 
-public class Challenge4 {
+public class Challenge4And5 {
     public static void main(String[] args) {
         Function<String, String> lambdaFunction = (String source) -> {
             StringBuilder returnVal = new StringBuilder();

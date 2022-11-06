@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,10 +12,13 @@ public class Main {
                 "O71"
         );
 
+        List<String> gnumbers = new ArrayList<>();
         someBingoNumbers.forEach(number -> {
             if (number.toUpperCase().startsWith("G")) {
-                System.out.println(number);
+                gnumbers.add(number);
             }
         });
+        gnumbers.sort((String s1, String s2) -> s1.compareTo(s2));
+        gnumbers.forEach((String s) -> System.out.println(s));
     }
 }

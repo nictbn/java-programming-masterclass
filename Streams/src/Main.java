@@ -12,13 +12,19 @@ public class Main {
                 "O71"
         );
 
-        List<String> gnumbers = new ArrayList<>();
-        someBingoNumbers.forEach(number -> {
-            if (number.toUpperCase().startsWith("G")) {
-                gnumbers.add(number);
-            }
-        });
-        gnumbers.sort((String s1, String s2) -> s1.compareTo(s2));
-        gnumbers.forEach((String s) -> System.out.println(s));
+//        List<String> gnumbers = new ArrayList<>();
+//        someBingoNumbers.forEach(number -> {
+//            if (number.toUpperCase().startsWith("G")) {
+//                gnumbers.add(number);
+//            }
+//        });
+//        gnumbers.sort((String s1, String s2) -> s1.compareTo(s2));
+//        gnumbers.forEach((String s) -> System.out.println(s));
+
+        someBingoNumbers.stream()
+                .map(String::toUpperCase)
+                .filter(s -> s.startsWith("G"))
+                .sorted()
+                .forEach(System.out::println);
     }
 }

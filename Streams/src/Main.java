@@ -79,5 +79,10 @@ public class Main {
         departments.stream().flatMap(department -> department.getEmployees().stream())
                 .reduce((e1, e2) -> e1.getAge() > e2.getAge() ? e1 : e2)
                 .ifPresent(System.out::println);
+
+        Stream.of("ABC", "AC", "BAA", "CCCC", "XY", "ST").filter(s -> {
+            System.out.println(s);
+            return s.length() == 3;
+        });
     }
 }

@@ -66,7 +66,7 @@ public class Main {
         htmlText.append("<p>Here is the summary</p>");
 
         String h2Pattern = "<h2>";
-        Pattern pattern = Pattern.compile(h2Pattern, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+        Pattern pattern = Pattern.compile(h2Pattern);
         Matcher matcher = pattern.matcher(htmlText);
         System.out.println(matcher.matches());
     }

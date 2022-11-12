@@ -9,5 +9,8 @@ public class Main {
         System.out.println(alphaNumeric.replaceAll(".", "Y"));
 
         System.out.println(alphaNumeric.replaceAll("^abcDDD", "YYY"));
+
+        String secondString = "abcDDDeeeF13GhhiiiabcDDDjkl99z";
+        System.out.println(secondString.replaceAll("^abcDDD", "YYY"));
     }
 }

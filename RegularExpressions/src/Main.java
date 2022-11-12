@@ -19,5 +19,6 @@ public class Main {
         System.out.println(alphaNumeric.replaceAll("jkl99z$", "THE END"));
         System.out.println(alphaNumeric.replaceAll("[aei]", "X"));
         System.out.println(alphaNumeric.replaceAll("[aei]", "I replaced a letter here"));
+        System.out.println(alphaNumeric.replaceAll("[aei][Fj]", "X"));
     }
 }

@@ -37,5 +37,6 @@ public class Main {
         String hasWhitespace = "I have blanks and\ta tab, and also a newline\n";
         System.out.println(hasWhitespace);
         System.out.println(hasWhitespace.replaceAll("\\s", ""));
+        System.out.println(hasWhitespace.replaceAll("\t", "X"));
     }
 }

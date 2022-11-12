@@ -104,7 +104,11 @@ public class Main {
 
         // NOT operator [^abc]
         String tvTest = "tstvtkt";
-        String tNotVRegExp = "t[^v]";
+
+//        String tNotVRegExp = "t[^v]";
+
+        // Use negative lookahead to find t followed by nothing as well
+        String tNotVRegExp = "t(?!v)";
         Pattern tNotVPattern = Pattern.compile(tNotVRegExp);
         Matcher tNotVMatcher = tNotVPattern.matcher(tvTest);
 

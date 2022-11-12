@@ -28,5 +28,6 @@ public class Main {
         System.out.println(newAlphaNumeric.replaceAll("[^ej]", "X"));
         System.out.println(newAlphaNumeric.replaceAll("[abcdef345678]", "X"));
         System.out.println(newAlphaNumeric.replaceAll("[a-f3-8]", "X"));
+        System.out.println(newAlphaNumeric.replaceAll("[a-fA-F3-8]", "X"));
     }
 }

@@ -26,5 +26,6 @@ public class Main {
 
         String newAlphaNumeric = "abcDDDeeeF13Ghhiiijkl99z";
         System.out.println(newAlphaNumeric.replaceAll("[^ej]", "X"));
+        System.out.println(newAlphaNumeric.replaceAll("[abcdef345678]", "X"));
     }
 }

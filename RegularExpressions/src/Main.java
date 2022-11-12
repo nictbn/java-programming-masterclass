@@ -65,7 +65,7 @@ public class Main {
         htmlText.append("<h2>Summary</h2>");
         htmlText.append("<p>Here is the summary</p>");
 
-        String h2Pattern = "<h2>";
+        String h2Pattern = ".*<h2>.*";
         Pattern pattern = Pattern.compile(h2Pattern);
         Matcher matcher = pattern.matcher(htmlText);
         System.out.println(matcher.matches());

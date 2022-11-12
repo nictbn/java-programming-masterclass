@@ -32,5 +32,6 @@ public class Main {
         System.out.println(newAlphaNumeric.replaceAll("(?iu)[a-f3-8]", "X"));
         System.out.println(newAlphaNumeric.replaceAll("[0-9]", "X"));
         System.out.println(newAlphaNumeric.replaceAll("\\d", "X"));
+        System.out.println(newAlphaNumeric.replaceAll("\\D", "X"));
     }
 }

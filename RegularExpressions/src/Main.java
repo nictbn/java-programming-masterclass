@@ -4,5 +4,8 @@ public class Main {
         System.out.println(string);
         String yourString = string.replaceAll("I", "You");
         System.out.println(yourString);
+
+        String alphaNumeric = "abcDDDeeeF13Ghhiiijkl99z";
+        System.out.println(alphaNumeric.replaceAll(".", "Y"));
     }
 }

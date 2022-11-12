@@ -50,7 +50,7 @@ public class Main {
         System.out.println(thirdAlphaNumericString.replaceAll("^abcD+", "YYY"));
         System.out.println(thirdAlphaNumericString.replaceAll("^abcD*", "YYY"));
 
-        String fourthAlphaNumericString = "abcDeeeF13Ghhiiijkl99z";
+        String fourthAlphaNumericString = "abcDeF13Ghhiiijkl99z";
         System.out.println(fourthAlphaNumericString.replaceAll("^abcDe{2,5}", "YYY"));
     }
 }

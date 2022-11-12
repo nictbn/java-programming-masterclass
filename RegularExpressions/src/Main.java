@@ -7,5 +7,7 @@ public class Main {
 
         String alphaNumeric = "abcDDDeeeF13Ghhiiijkl99z";
         System.out.println(alphaNumeric.replaceAll(".", "Y"));
+
+        System.out.println(alphaNumeric.replaceAll("^abcDDD", "YYY"));
     }
 }

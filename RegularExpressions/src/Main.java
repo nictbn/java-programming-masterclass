@@ -43,5 +43,9 @@ public class Main {
         System.out.println(hasWhitespace.replaceAll("\\w", "T"));
         System.out.println(hasWhitespace.replaceAll("\\W", "Y"));
         System.out.println(hasWhitespace.replaceAll("\\b", "X"));
+
+        System.out.println("Quantifiers");
+        String thirdAlphaNumericString = "abcDDDeeeF13Ghhiiijkl99z";
+        System.out.println(thirdAlphaNumericString.replaceAll("^abcD{3}", "YYY"));
     }
 }

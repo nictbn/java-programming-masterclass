@@ -48,5 +48,6 @@ public class Main {
         String thirdAlphaNumericString = "abcDDDeeeF13Ghhiiijkl99z";
         System.out.println(thirdAlphaNumericString.replaceAll("^abcD{3}", "YYY"));
         System.out.println(thirdAlphaNumericString.replaceAll("^abcD+", "YYY"));
+        System.out.println(thirdAlphaNumericString.replaceAll("^abcD*", "YYY"));
     }
 }

@@ -40,5 +40,6 @@ public class Main {
         System.out.println(hasWhitespace.replaceAll("\t", "X"));
 
         System.out.println(hasWhitespace.replaceAll("\\S", "X"));
+        System.out.println(hasWhitespace.replaceAll("\\w", "T"));
     }
 }

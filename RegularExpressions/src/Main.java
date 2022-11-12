@@ -12,5 +12,9 @@ public class Main {
 
         String secondString = "abcDDDeeeF13GhhiiiabcDDDjkl99z";
         System.out.println(secondString.replaceAll("^abcDDD", "YYY"));
+
+        System.out.println(alphaNumeric.matches("^hello"));
+        System.out.println(alphaNumeric.matches("^abcDDD"));
+        System.out.println(alphaNumeric.matches("^abcDDDeeeF13Ghhiiijkl99z"));
     }
 }

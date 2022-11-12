@@ -88,5 +88,13 @@ public class Main {
         while (groupMatcher.find()) {
             System.out.println("Occurrence: " + groupMatcher.group(1));
         }
+
+        String h2TextGroups = "(<h2>)(.+?)(</h2>)";
+        Pattern h2TextPattern = Pattern.compile(h2TextGroups);
+        Matcher h2TextMatcher = h2TextPattern.matcher(htmlText);
+
+        while (h2TextMatcher.find()) {
+            System.out.println("Occurrence: " + h2TextMatcher.group(2));
+        }
     }
 }

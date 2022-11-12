@@ -117,5 +117,7 @@ public class Main {
             count++;
             System.out.println("Occurrence " + count + " : " + tNotVMatcher.start() + " to " + tNotVMatcher.end());
         }
+
+        //t(?=v)
     }
 }

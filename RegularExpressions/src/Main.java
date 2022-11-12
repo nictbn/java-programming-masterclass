@@ -23,5 +23,8 @@ public class Main {
 
         System.out.println("Harry".replaceAll("[Hh]arry", "Harry"));
         System.out.println("harry".replaceAll("[Hh]arry", "Harry"));
+
+        String newAlphaNumeric = "abcDDDeeeF13Ghhiiijkl99z";
+        System.out.println(newAlphaNumeric.replaceAll("[^ej]", "X"));
     }
 }

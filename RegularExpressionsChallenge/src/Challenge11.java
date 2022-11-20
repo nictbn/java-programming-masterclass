@@ -9,5 +9,13 @@ public class Challenge11 {
         while (matcher.find()) {
             System.out.println("Occurrence: " + matcher.group(1));
         }
+
+        System.out.println();
+        String challenge11b = "{0, 2}, {0, 5}, {1, 3}, {2, 4}, {x, y}, {6, 34}, {11, 12}";
+        Pattern pattern11b = Pattern.compile("\\{(\\d+, \\d+)\\}");
+        Matcher matcherb = pattern11b.matcher(challenge11b);
+        while (matcherb.find()) {
+            System.out.println("Occurrence: " + matcherb.group(1));
+        }
     }
 }

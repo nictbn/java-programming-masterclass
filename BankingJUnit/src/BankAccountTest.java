@@ -24,8 +24,15 @@ class BankAccountTest {
     }
 
     @Test
-    void withdraw() {
-        fail("This test has yet to be implemented");
+    void withdraw_branch() {
+        double balance = account.withdraw(600, true);
+        assertEquals(400.00, balance, 0.0001);
+    }
+
+    @Test
+    void withdraw_notBranch() {
+        assertThrows(IllegalArgumentException.class,
+                () -> account.withdraw(600, false));
     }
 
     @Test

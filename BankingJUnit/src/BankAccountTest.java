@@ -1,9 +1,15 @@
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BankAccountTest {
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("This executes before any test cases");
+    }
  private BankAccount account;
     @BeforeEach
     public void setup() {
@@ -39,4 +45,8 @@ class BankAccountTest {
         assertTrue(account.isChecking(), "The account is NOT a checking account");
     }
 
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("This executes after all the test cases have run");
+    }
 }

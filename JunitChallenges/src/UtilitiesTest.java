@@ -6,7 +6,9 @@ class UtilitiesTest {
 
     @Test
     void everyNthChar() {
-        fail("Empty test");
+        Utilities utils = new Utilities();
+        char[] output = utils.everyNthChar(new char[] {'h', 'e', 'l', 'l', 'o'}, 2);
+        assertArrayEquals(new char[] {'e', 'l'}, output);
     }
 
     @Test

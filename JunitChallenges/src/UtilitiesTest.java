@@ -30,6 +30,8 @@ class UtilitiesTest {
 
     @Test
     void nullIfOddLength() {
-        fail("Empty test");
+        Utilities util = new Utilities();
+        assertNull(util.nullIfOddLength("odd"));
+        assertNotNull(util.nullIfOddLength("even"));
     }
 }

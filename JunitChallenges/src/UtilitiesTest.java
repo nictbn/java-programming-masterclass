@@ -30,6 +30,13 @@ class UtilitiesTest {
     }
 
     @Test
+    void converter_arithmeticException() {
+        Utilities util = new Utilities();
+        assertThrows(ArithmeticException.class,
+                () -> util.converter(10, 0));
+    }
+
+    @Test
     void nullIfOddLength() {
         Utilities util = new Utilities();
         assertNull(util.nullIfOddLength("odd"));

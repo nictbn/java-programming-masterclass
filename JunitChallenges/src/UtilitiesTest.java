@@ -9,6 +9,8 @@ class UtilitiesTest {
         Utilities utils = new Utilities();
         char[] output = utils.everyNthChar(new char[] {'h', 'e', 'l', 'l', 'o'}, 2);
         assertArrayEquals(new char[] {'e', 'l'}, output);
+        char[] output2 = utils.everyNthChar(new char[] {'h', 'e', 'l', 'l', 'o'}, 8);
+        assertArrayEquals(new char[] {'h', 'e', 'l', 'l', 'o'}, output2);
     }
 
     @Test

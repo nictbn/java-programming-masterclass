@@ -11,7 +11,9 @@ class UtilitiesTest {
 
     @Test
     void removePairs() {
-        fail("Empty test");
+        Utilities util = new Utilities();
+        assertEquals("ABCDEF", util.removePairs("AABCDDEFF"));
+        assertEquals("ABCABDEF", util.removePairs("ABCCABDEEF"));
     }
 
     @Test

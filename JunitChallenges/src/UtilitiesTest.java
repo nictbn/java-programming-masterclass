@@ -1,12 +1,18 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UtilitiesTest {
+    private Utilities utils;
+
+    @BeforeEach
+    public void setup() {
+        utils = new Utilities();
+    }
 
     @Test
     void everyNthChar() {
-        Utilities utils = new Utilities();
         char[] output = utils.everyNthChar(new char[] {'h', 'e', 'l', 'l', 'o'}, 2);
         assertArrayEquals(new char[] {'e', 'l'}, output);
         char[] output2 = utils.everyNthChar(new char[] {'h', 'e', 'l', 'l', 'o'}, 8);
@@ -15,31 +21,27 @@ class UtilitiesTest {
 
     @Test
     void removePairs() {
-        Utilities util = new Utilities();
-        assertEquals("ABCDEF", util.removePairs("AABCDDEFF"));
-        assertEquals("ABCABDEF", util.removePairs("ABCCABDEEF"));
-        assertNull(util.removePairs(null), "Did not return null");
-        assertEquals("A", util.removePairs("A"));
-        assertEquals("", util.removePairs(""));
+        assertEquals("ABCDEF", utils.removePairs("AABCDDEFF"));
+        assertEquals("ABCABDEF", utils.removePairs("ABCCABDEEF"));
+        assertNull(utils.removePairs(null), "Did not return null");
+        assertEquals("A", utils.removePairs("A"));
+        assertEquals("", utils.removePairs(""));
     }
 
     @Test
     void converter() {
-        Utilities util = new Utilities();
-        assertEquals(300, util.converter(10, 5));
+        assertEquals(300, utils.converter(10, 5));
     }
 
     @Test
     void converter_arithmeticException() {
-        Utilities util = new Utilities();
         assertThrows(ArithmeticException.class,
-                () -> util.converter(10, 0));
+                () -> utils.converter(10, 0));
     }
 
     @Test
     void nullIfOddLength() {
-        Utilities util = new Utilities();
-        assertNull(util.nullIfOddLength("odd"));
-        assertNotNull(util.nullIfOddLength("even"));
+        assertNull(utils.nullIfOddLength("odd"));
+        assertNotNull(utils.nullIfOddLength("even"));
     }
 }

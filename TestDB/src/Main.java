@@ -17,8 +17,9 @@ public class Main {
 //            statement.execute("INSERT INTO contacts(name, phone, email) VALUES('Fido', 9038, 'dog@email.com')");
 //            statement.execute("UPDATE contacts SET phone=5566789 WHERE name='Jane'");
 //            statement.execute("DELETE FROM contacts WHERE name='Joe'");
-            statement.execute("SELECT * FROM contacts");
-            ResultSet results = statement.getResultSet();
+//            statement.execute("SELECT * FROM contacts");
+//            ResultSet results = statement.getResultSet();
+            ResultSet results = statement.executeQuery("SELECT * FROM contacts");
             while(results.next()) {
                 System.out.println(results.getString("name") + " " + results.getInt("phone") + " " + results.getString("email"));
             }

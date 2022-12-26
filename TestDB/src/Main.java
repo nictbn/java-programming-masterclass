@@ -17,10 +17,10 @@ public class Main {
 //            conn.setAutoCommit(false);
             statement.execute("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
             statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_CONTACTS + "(" + COLUMN_NAME +" TEXT, " + COLUMN_PHONE + " INTEGER, " + COLUMN_EMAIL + " TEXT)");
-            statement.execute("INSERT INTO " + TABLE_CONTACTS+ "(" + COLUMN_NAME + ", " + COLUMN_PHONE + ", " + COLUMN_EMAIL + ") VALUES('Tim', 6545678, 'tim@email.com')");
-            statement.execute("INSERT INTO " + TABLE_CONTACTS+ "(" + COLUMN_NAME + ", " + COLUMN_PHONE + ", " + COLUMN_EMAIL + ") VALUES('Joe', 45632, 'joe@anywhere.com')");
-            statement.execute("INSERT INTO " + TABLE_CONTACTS+ "(" + COLUMN_NAME + ", " + COLUMN_PHONE + ", " + COLUMN_EMAIL + ") VALUES('Jane', 4829484, 'jane@somewhere.com')");
-            statement.execute("INSERT INTO " + TABLE_CONTACTS+ "(" + COLUMN_NAME + ", " + COLUMN_PHONE + ", " + COLUMN_EMAIL + ") VALUES('Fido', 9038, 'dog@email.com')");
+            insertContact(statement, "Tim", 6545678, "tim@email.com");
+            insertContact(statement, "Joe", 45632, "joe@anywhere.com");
+            insertContact(statement, "Jane", 4829484, "jane@somewhere.com");
+            insertContact(statement, "Fido", 9038, "dog@email.com");
             statement.execute("UPDATE " + TABLE_CONTACTS + " SET " + COLUMN_PHONE + "=5566789 WHERE " + COLUMN_NAME + "='Jane'");
             statement.execute("DELETE FROM " + TABLE_CONTACTS + " WHERE " + COLUMN_NAME + "='Joe'");
             statement.execute("SELECT * FROM " + TABLE_CONTACTS);
@@ -32,5 +32,13 @@ public class Main {
         } catch (SQLException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }
+    }
+
+    public static void insertContact(Statement statement, String name, int phone, String email) throws SQLException {
+        statement.execute("INSERT INTO " + TABLE_CONTACTS +
+                "(" + COLUMN_NAME + ", " + COLUMN_PHONE + ", " + COLUMN_EMAIL + ") VALUES('"
+                + name + "', "
+                + phone +", '"
+                + email + "')");
     }
 }

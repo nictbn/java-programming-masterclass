@@ -46,7 +46,7 @@ public class Datasource {
         }
     }
 
-    private List<Artist> queryArtists() {
+    public List<Artist> queryArtists() {
         try(Statement statement = conn.createStatement();
             ResultSet results = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS)
         ){

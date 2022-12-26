@@ -19,6 +19,7 @@ public class Main {
 //            statement.execute("INSERT INTO contacts(name, phone, email) VALUES('Jane', 4829484, 'jane@somewhere.com')");
 //            statement.execute("INSERT INTO contacts(name, phone, email) VALUES('Fido', 9038, 'dog@email.com')");
             statement.execute("UPDATE contacts SET phone=5566789 WHERE name='Jane'");
+            statement.execute("DELETE FROM contacts WHERE name='Joe'");
         } catch (SQLException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }

@@ -93,6 +93,9 @@ public class Datasource {
     public static final String QUERY_ALBUMS_BY_ARTIST_ID = "SELECT * FROM " + TABLE_ALBUMS +
             " WHERE " + COLUMN_ALBUM_ARTIST + " = ? ORDER BY " + COLUMN_ALBUM_NAME + " COLLATE NOCASE";
 
+    public static final String UPDATE_ARTIST_NAME = "UPDATE " + TABLE_ARTISTS + " SET " +
+            COLUMN_ARTIST_NAME + " = ? WHERE " + COLUMN_ARTIST_ID + " = ?";
+
 
     private Connection conn;
 
@@ -109,6 +112,8 @@ public class Datasource {
     private PreparedStatement queryAlbum;
 
     private PreparedStatement queryAlbumsByArtistId;
+
+    private PreparedStatement updateArtistName;
 
     private static final Datasource instance = new Datasource();
     private Datasource() {
@@ -128,6 +133,7 @@ public class Datasource {
             queryArtist = conn.prepareStatement(QUERY_ARTIST);
             queryAlbum = conn.prepareStatement(QUERY_ALBUM);
             queryAlbumsByArtistId = conn.prepareStatement(QUERY_ALBUMS_BY_ARTIST_ID);
+            updateArtistName = conn.prepareStatement(UPDATE_ARTIST_NAME);
             return true;
         } catch (SQLException e) {
             System.out.println("Couldn't connect to the database");
@@ -137,9 +143,6 @@ public class Datasource {
 
     public void close() {
         try {
-            if (conn != null) {
-                conn.close();
-            }
             if (querySongInfoView != null) {
                 querySongInfoView.close();
             }
@@ -160,6 +163,12 @@ public class Datasource {
             }
             if (queryAlbumsByArtistId != null) {
                 queryAlbumsByArtistId.close();
+            }
+            if (updateArtistName != null) {
+                updateArtistName.close();
+            }
+            if (conn != null) {
+                conn.close();
             }
         } catch (SQLException e) {
             System.out.println("Couldn't close connection: " + e.getMessage());
@@ -198,72 +207,6 @@ public class Datasource {
         } catch (SQLException e) {
             System.out.println("Query failed: " + e.getMessage());
             return null;
-        }
-    }
-
-    public List<String> queryAlbumsForArtist(String artistName, int sortOrder) {
-        StringBuilder sb = new StringBuilder(QUERY_ALBUMS_BY_ARTIST_START);
-        sb.append(artistName);
-        sb.append("\"");
-        if (sortOrder != ORDER_BY_NONE) {
-            sb.append(QUERY_ALBUMS_BY_ARTIST_SORT);
-            if (sortOrder == ORDER_BY_DESC) {
-                sb.append("DESC");
-            } else {
-                sb.append("ASC");
-            }
-        }
-
-        System.out.println("SQL Statement = " + sb);
-        try (Statement statement = conn.createStatement();
-             ResultSet results = statement.executeQuery(sb.toString())) {
-            List<String> albums = new ArrayList<>();
-            while (results.next()) {
-                albums.add(results.getString(1));
-            }
-            return albums;
-        } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public void querySongsMetadata() {
-        String sql = "SELECT * FROM " + TABLE_SONGS;
-
-        try (Statement statement = conn.createStatement();
-             ResultSet results = statement.executeQuery(sql)) {
-            ResultSetMetaData meta = results.getMetaData();
-            int numColumns = meta.getColumnCount();
-            for (int i = 1; i <= numColumns; i++) {
-                System.out.format("Column %d in the songs table is named %s\n", i, meta.getColumnName(i));
-            }
-        } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-        }
-    }
-
-    public int getCount(String table) {
-        String sql = "SELECT COUNT(*) as count FROM " + table;
-        try (Statement statement = conn.createStatement();
-             ResultSet results = statement.executeQuery(sql)) {
-            int count = results.getInt("count");
-            System.out.format("Count = %d\n", count);
-            return count;
-        } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return -1;
-        }
-    }
-
-    public boolean createViewForSongArtists() {
-        try (Statement statement = conn.createStatement()) {
-            statement.execute(CREATE_ARTIST_FOR_SONG_VIEW);
-            System.out.println(CREATE_ARTIST_FOR_SONG_VIEW);
-            return true;
-        } catch (SQLException e) {
-            System.out.println("Create VIew failed: " + e.getMessage());
-            return false;
         }
     }
 
@@ -308,42 +251,6 @@ public class Datasource {
         }
     }
 
-    public void insertSong(String title, String artist, String album, int track) {
-        try {
-            conn.setAutoCommit(false);
-            int artistId = insertArtist(artist);
-            int albumId = insertAlbum(album, artistId);
-            insertIntoSongs.setInt(1, track);
-            insertIntoSongs.setString(2, title);
-            insertIntoSongs.setInt(3, albumId);
-            int affectedRows = insertIntoSongs.executeUpdate();
-            if (affectedRows == 1) {
-                conn.commit();
-            } else {
-                throw new SQLException("The song insert failed!");
-            }
-            ResultSet generatedKeys = insertIntoSongs.getGeneratedKeys();
-            if (!generatedKeys.next()) {
-                throw new SQLException("Couldn't get _id for album");
-            }
-        } catch (Exception e) {
-            System.out.println("Insert song exception: " + e.getMessage());
-            try {
-                System.out.println("Performing rollback");
-                conn.rollback();
-            } catch (SQLException e2) {
-                System.out.println("Oh boy! Things are really bad! " + e2.getMessage());
-            }
-        } finally {
-            try {
-                System.out.println("Resetting default commit behaviour");
-                conn.setAutoCommit(true);
-            } catch (SQLException e) {
-                System.out.println("Couldn't reset autocommit: " + e.getMessage());
-            }
-        }
-    }
-
     public List<Album> queryAlbumsForArtistId(int id) {
         try {
             queryAlbumsByArtistId.setInt(1, id);
@@ -360,6 +267,18 @@ public class Datasource {
         } catch (SQLException e) {
             System.out.println("Query failed: " + e.getMessage());
             return null;
+        }
+    }
+
+    public boolean updateArtistName(int id, String newName) {
+        try {
+            updateArtistName.setString(1, newName);
+            updateArtistName.setInt(2, id);
+            int affectedRecords = updateArtistName.executeUpdate();
+            return affectedRecords == 1;
+        } catch (SQLException e) {
+            System.out.println("Update failed: " + e.getMessage());
+            return false;
         }
     }
 }

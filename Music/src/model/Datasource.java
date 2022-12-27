@@ -357,7 +357,7 @@ public class Datasource {
             if (!generatedKeys.next()) {
                 throw new SQLException("Couldn't get _id for album");
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println("Insert song exception: " + e.getMessage());
             try {
                 System.out.println("Performing rollback");

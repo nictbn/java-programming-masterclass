@@ -338,4 +338,23 @@ public class Datasource {
             }
         }
     }
+
+    public List<Album> queryAlbumsForArtistId(int id) {
+        try {
+            queryAlbumsByArtistId.setInt(1, id);
+            ResultSet results = queryAlbumsByArtistId.executeQuery();
+            List<Album> albums = new ArrayList<>();
+            while (results.next()) {
+                Album album = new Album();
+                album.setId(results.getInt(1));
+                album.setName(results.getString(2));
+                album.setArtistId(id);
+                albums.add(album);
+            }
+            return albums;
+        } catch (SQLException e) {
+            System.out.println("Query failed: " + e.getMessage());
+            return null;
+        }
+    }
 }

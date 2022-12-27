@@ -182,4 +182,18 @@ public class Datasource {
             System.out.println("Query failed: " + e.getMessage());
         }
     }
+
+    public int getCount(String table) {
+        String sql = "SELECT COUNT(*) as count, MIN(_id) as min_id FROM " + table;
+        try(Statement statement = conn.createStatement();
+            ResultSet results = statement.executeQuery(sql)) {
+            int count = results.getInt("count");
+            int min = results.getInt("min_id");
+            System.out.format("Count = %d, Min = %d\n", count, min);
+            return count;
+        } catch (SQLException e) {
+            System.out.println("Query failed: " + e.getMessage());
+            return -1;
+        }
+    }
 }

@@ -54,7 +54,7 @@ public class Main {
                         " Track number = " + songArtist.getTrack());
             }
         }
-        datasource.insertSong("Touch of Grey", "Grateful Dead", "In The Dark", 1);
+        datasource.insertSong("Like A Rolling Stone", "Bob Dylan", "Bob Dylan's Greatest Hits", 5);
         datasource.close();
     }
 }

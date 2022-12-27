@@ -39,6 +39,17 @@ public class Main {
         int count = datasource.getCount(Datasource.TABLE_SONGS);
         System.out.println("Number of songs is: " + count);
         datasource.createViewForSongArtists();
+
+        songArtists = datasource.querySongInfoView("She's On Fire");
+        if (songArtists.isEmpty()) {
+            System.out.println("Couldn't find the artist for the song");
+        } else {
+            for (SongArtist songArtist : songArtists) {
+                System.out.println("FROM VIEW - Artist name = " + songArtist.getArtistName() +
+                        " Album name = " + songArtist.getAlbumName() +
+                        " Track number = " + songArtist.getTrack());
+            }
+        }
         datasource.close();
     }
 }

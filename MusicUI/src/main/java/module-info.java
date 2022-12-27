@@ -13,4 +13,5 @@ module com.example.musicui {
 
     opens com.example.musicui to javafx.fxml;
     exports com.example.musicui;
+    exports com.example.musicui.model;
 }

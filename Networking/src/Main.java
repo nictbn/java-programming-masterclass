@@ -6,7 +6,8 @@ import java.net.URL;
 public class Main {
     public static void main(String[] args) {
         try {
-            URI uri = new URI("http://username:password@myserver.com:5000/catalogue/phones?os=android#samsung");
+//            URI uri = new URI("http://username:password@myserver.com:5000/catalogue/phones?os=android#samsung");
+            URI uri = new URI("/catalogue/phones?os=android#samsung");
             URL url = uri.toURL();
             System.out.println("URL = " + url);
         } catch (URISyntaxException e) {

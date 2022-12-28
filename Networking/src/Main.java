@@ -11,7 +11,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         try {
-            URL url = new URL("http://example.org");
+            URL url = new URL("https://api.flickr.com/services/feeds/photos_public.gne?tags=cats");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent", "Chrome");

@@ -11,7 +11,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         try {
-            URL url = new URL("http://example.org");
+            URL url = new URL("http://example.org/somepage");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent", "Chrome");
@@ -22,6 +22,7 @@ public class Main {
 
             if (responseConde != 200) {
                 System.out.println("Error reading web page");
+                System.out.println(connection.getResponseMessage());
                 return;
             }
             BufferedReader inputReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));

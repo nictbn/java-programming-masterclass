@@ -23,6 +23,9 @@ public class Main {
 
             URL url3 = resolvedUri3.toURL();
             System.out.println("URL = " + url3);
+
+            URI relativizedURI = baseUri.relativize(resolvedUri2);
+            System.out.println("Relative URI = " + relativizedURI);
         } catch (URISyntaxException e) {
             System.out.println("URI Bad Syntax: " + e.getMessage());
         } catch (MalformedURLException e) {

@@ -1,7 +1,9 @@
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.SocketException;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +14,13 @@ public class Main {
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 socket.receive(packet);
                 System.out.println("Text received is: " + new String(buffer));
+
+                String returnString = "echo: " + new String(buffer, 0, packet.getLength());
+                byte[] buffer2 = returnString.getBytes(StandardCharsets.UTF_8);
+                InetAddress address = packet.getAddress();
+                int port = packet.getPort();
+                packet = new DatagramPacket(buffer2, buffer2.length, address, port);
+                socket.send(packet);
             }
         } catch (SocketException e) {
             System.out.println("Socket Exception: " + e.getMessage());

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -17,6 +18,9 @@ public class HelloApplication extends Application {
         root.setAlignment(Pos.CENTER);
         root.setVgap(10);
         root.setHgap(10);
+
+        Label greeting = new Label("Welcome to JavaFx");
+        root.getChildren().add(greeting);
 
         Scene scene = new Scene(root, 320, 240);
         stage.setTitle("Hello JavaFX!");

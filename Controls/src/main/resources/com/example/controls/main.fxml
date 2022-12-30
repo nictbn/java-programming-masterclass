@@ -15,6 +15,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.scene.control.ChoiceBox?>
 <GridPane alignment="CENTER" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.example.controls.Controller">
 
@@ -47,18 +48,29 @@
     </HBox>
     <TextField GridPane.rowIndex="1" GridPane.columnIndex="0"/>
     <PasswordField GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" GridPane.columnSpan="3">
+    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" GridPane.columnSpan="2">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="This is Option 1 This is Option 1"/>
-                <String fx:value="This is Option 2 This is Option 2"/>
-                <String fx:value="This is Option 3 This is Option 3"/>
-                <String fx:value="This is Option 4 This is Option 4"/>
-                <String fx:value="This is Option 5 This is Option 5"/>
+                <String fx:value="This is Option 1"/>
+                <String fx:value="This is Option 2"/>
+                <String fx:value="This is Option 3"/>
+                <String fx:value="This is Option 4"/>
+                <String fx:value="This is Option 5"/>
             </FXCollections>
         </items>
         <value>
             <String fx:value="This is Option 4 This is Option 4"/>
         </value>
     </ComboBox>
+    <ChoiceBox GridPane.rowIndex="1" GridPane.columnIndex="4">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="CD 1"/>
+                <String fx:value="CD 2"/>
+                <String fx:value="CD 3"/>
+                <String fx:value="CD 4"/>
+                <String fx:value="CD 5"/>
+            </FXCollections>
+        </items>
+    </ChoiceBox>
 </GridPane>

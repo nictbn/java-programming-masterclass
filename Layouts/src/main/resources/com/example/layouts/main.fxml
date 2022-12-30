@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.control.Button?>
-<FlowPane fx:controller="com.example.layouts.Controller" xmlns:fx="javafx.com/fxml" orientation="VERTICAL">
+<?import javafx.scene.layout.TilePane?>
+<TilePane fx:controller="com.example.layouts.Controller" xmlns:fx="javafx.com/fxml">
     <Button text="Button One"/>
     <Button text="Button Two"/>
     <Button text="Button Three"/>
@@ -12,4 +12,4 @@
     <Button text="Button Eight"/>
     <Button text="Button Nine"/>
     <Button text="Button Ten"/>
-</FlowPane>
+</TilePane>

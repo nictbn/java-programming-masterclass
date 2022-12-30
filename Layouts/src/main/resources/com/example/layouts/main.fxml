@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.control.Button?>
-<FlowPane fx:controller="com.example.layouts.Controller" xmlns:fx="javafx.com/fxml" orientation="HORIZONTAL">
+<FlowPane fx:controller="com.example.layouts.Controller" xmlns:fx="javafx.com/fxml" orientation="VERTICAL">
     <Button text="Button One"/>
     <Button text="Button Two"/>
     <Button text="Button Three"/>

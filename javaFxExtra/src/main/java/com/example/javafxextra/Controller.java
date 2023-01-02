@@ -6,7 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
+
+import java.io.File;
 
 public class Controller {
     @FXML
@@ -36,6 +37,11 @@ public class Controller {
 
     public void handleClick() {
         DirectoryChooser chooser = new DirectoryChooser();
-        chooser.showDialog(gridPane.getScene().getWindow());
+        File file = chooser.showDialog(gridPane.getScene().getWindow());
+        if (file != null) {
+            System.out.println(file.getPath());
+        } else {
+            System.out.println("Chooser was cancelled");
+        }
     }
 }

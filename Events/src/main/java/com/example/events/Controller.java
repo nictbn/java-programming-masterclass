@@ -39,8 +39,14 @@ public class Controller {
         }
         Runnable task = () -> {
             try {
+                String s = Platform.isFxApplicationThread() ? "UI Thread" : "Background Thread";
+                System.out.println("I'm going to sleep on the " + s);
                 Thread.sleep(10000);
-                Platform.runLater(() -> ourLabel.setText("We did something"));
+                Platform.runLater(() -> {
+                    String s2 = Platform.isFxApplicationThread() ? "UI Thread" : "Background Thread";
+                    System.out.println("I'm updating the label on the " + s2);
+                    ourLabel.setText("We did something");
+                });
             } catch (InterruptedException e1) {
 
             }

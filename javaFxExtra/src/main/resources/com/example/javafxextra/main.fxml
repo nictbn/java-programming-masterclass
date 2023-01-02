@@ -13,5 +13,5 @@
     <Button text="Button Five" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
     <RadioButton text="Choice 1" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
     <Label fx:id="label" text="JavaFx Effects" GridPane.rowIndex="1" GridPane.columnIndex="1"
-    onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" rotate="90"/>
+    onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit"/>
 </GridPane>

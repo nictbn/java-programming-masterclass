@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+<contact>
+	<first_name>Timmy</first_name>
+	<last_name>Doe</last_name>
+	<phone_number>123456</phone_number>
+	<notes>Timmy's Phone Number</notes>
+</contact>
+<contact>
+	<first_name>Tammy</first_name>
+	<last_name>Doe</last_name>
+	<phone_number>5432100</phone_number>
+	<notes>Tammy's Phone Number</notes>
+</contact>
+<contact>
+	<first_name>Tommy</first_name>
+	<last_name>Doe</last_name>
+	<phone_number>098766789</phone_number>
+	<notes>Tommy's Phone Number</notes>
+</contact>
+</contacts>

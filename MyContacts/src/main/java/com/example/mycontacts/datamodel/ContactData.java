@@ -14,10 +14,9 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartDocument;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ContactData {
     private static final String CONTACTS_FILE = "contacts.xml";
@@ -38,7 +37,7 @@ public class ContactData {
         return contacts;
     }
 
-    public void addContactData(Contact item) {
+    public void addContact(Contact item) {
         contacts.add(item);
     }
 
@@ -51,7 +50,8 @@ public class ContactData {
             // First, create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
             // Setup a new eventReader
-            InputStream in = new FileInputStream(CONTACTS_FILE);
+            String location =  Paths.get("").toAbsolutePath() + File.separator + "MyContacts" + File.separator + CONTACTS_FILE;
+            InputStream in = new FileInputStream(location);
             XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
             // read the XML document
             Contact contact = null;
@@ -120,8 +120,9 @@ public class ContactData {
             // create an XMLOutputFactory
             XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
             // create XMLEventWriter
+            String location =  Paths.get("").toAbsolutePath() + File.separator + "MyContacts" + File.separator + CONTACTS_FILE;
             XMLEventWriter eventWriter = outputFactory
-                    .createXMLEventWriter(new FileOutputStream(CONTACTS_FILE));
+                    .createXMLEventWriter(new FileOutputStream(location));
             // create an EventFactory
             XMLEventFactory eventFactory = XMLEventFactory.newInstance();
             XMLEvent end = eventFactory.createDTD("\n");

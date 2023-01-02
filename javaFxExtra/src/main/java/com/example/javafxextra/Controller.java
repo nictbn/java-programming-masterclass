@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 public class Controller {
@@ -34,7 +35,7 @@ public class Controller {
     }
 
     public void handleClick() {
-        FileChooser chooser = new FileChooser();
-        chooser.showOpenDialog(gridPane.getScene().getWindow());
+        DirectoryChooser chooser = new DirectoryChooser();
+        chooser.showDialog(gridPane.getScene().getWindow());
     }
 }

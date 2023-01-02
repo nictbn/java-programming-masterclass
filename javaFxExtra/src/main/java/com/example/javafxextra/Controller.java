@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 
@@ -36,8 +37,13 @@ public class Controller {
     }
 
     public void handleClick() {
-        DirectoryChooser chooser = new DirectoryChooser();
-        File file = chooser.showDialog(gridPane.getScene().getWindow());
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showSaveDialog(gridPane.getScene().getWindow());
+        chooser.setTitle("Save Application FIle");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text", "*.txt"),
+                new FileChooser.ExtensionFilter("PDF", "*.pdf")
+        );
         if (file != null) {
             System.out.println(file.getPath());
         } else {

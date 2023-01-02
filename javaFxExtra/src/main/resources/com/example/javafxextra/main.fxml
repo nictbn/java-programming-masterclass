@@ -5,6 +5,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.web.WebView?>
 <GridPane fx:id="gridPane" alignment="CENTER" vgap="10" hgap="10" xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.example.javafxextra.Controller" stylesheets="@style.css">
     <Button text="Open..." onAction="#handleClick" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
@@ -15,5 +16,6 @@
     <RadioButton text="Choice 1" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
     <Label fx:id="label" text="JavaFx Effects" GridPane.rowIndex="1" GridPane.columnIndex="1"
     onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit"/>
-    <Hyperlink text="www.javafx.com" GridPane.rowIndex="3" GridPane.columnIndex="0" onAction="#handleLinkClick"/>
+    <Hyperlink text="www.google.com" GridPane.rowIndex="3" GridPane.columnIndex="0" onAction="#handleLinkClick"/>
+    <WebView fx:id="webView" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowSpan="3"/>
 </GridPane>

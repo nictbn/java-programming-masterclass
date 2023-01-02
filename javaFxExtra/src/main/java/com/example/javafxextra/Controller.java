@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import java.awt.Desktop;
 import java.io.File;
@@ -22,6 +24,9 @@ public class Controller {
 
     @FXML
     private GridPane gridPane;
+
+    @FXML
+    private WebView webView;
 
     public void initialize() {
         button4.setEffect(new DropShadow());
@@ -59,12 +64,7 @@ public class Controller {
 
     @FXML
     public void handleLinkClick() {
-        try {
-            Desktop.getDesktop().browse(new URI("http://www.javafx.com"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        WebEngine engine = webView.getEngine();
+        engine.load("http://www.google.com");
     }
 }

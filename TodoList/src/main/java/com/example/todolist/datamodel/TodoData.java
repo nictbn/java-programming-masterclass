@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,6 +31,10 @@ public class TodoData {
 
     public List<TodoItem> getTodoItems() {
         return todoItems;
+    }
+
+    public void addTodoItem(TodoItem todoItem) {
+        todoItems.add(todoItem);
     }
 
     public void loadTodoItems() throws IOException {

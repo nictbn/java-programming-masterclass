@@ -9,7 +9,7 @@
     <Button text="Button One" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
     <Button text="Button Two" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
     <Button id="button_three" text="Button Three" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-    <Button text="Button Four" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+    <Button fx:id="button4" text="Button Four" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
     <Button text="Button Five" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
     <RadioButton text="Choice 1" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
     <Label fx:id="label" text="JavaFx Effects" GridPane.rowIndex="1" GridPane.columnIndex="1"

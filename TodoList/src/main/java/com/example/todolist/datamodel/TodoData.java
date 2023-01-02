@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,11 +16,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TodoData {
-    private static TodoData instance = new TodoData();
-    private static String fileName = "TodoListItems.txt";
+    private final static TodoData instance = new TodoData();
+    private final static String fileName = "TodoListItems.txt";
 
     private List<TodoItem> todoItems;
-    private DateTimeFormatter formatter;
+    private final DateTimeFormatter formatter;
 
     public static TodoData getInstance() {
         return instance;
@@ -33,13 +34,9 @@ public class TodoData {
         return todoItems;
     }
 
-    public void setTodoItems(List<TodoItem> todoItems) {
-        this.todoItems = todoItems;
-    }
-
     public void loadTodoItems() throws IOException {
         todoItems = FXCollections.observableArrayList();
-        Path path = Paths.get(fileName);
+        Path path = Paths.get(Paths.get("").toAbsolutePath() + File.separator + "TodoList" + File.separator + fileName);
 
         String input;
         try (BufferedReader br = Files.newBufferedReader(path)) {
@@ -56,7 +53,7 @@ public class TodoData {
     }
 
     public void storeTodoItems() throws IOException {
-        Path path = Paths.get(fileName);
+        Path path = Paths.get(Paths.get("").toAbsolutePath() + File.separator + "TodoList" + File.separator + fileName);
 
         try (BufferedWriter bw = Files.newBufferedWriter(path)) {
             Iterator<TodoItem> iter = todoItems.iterator();

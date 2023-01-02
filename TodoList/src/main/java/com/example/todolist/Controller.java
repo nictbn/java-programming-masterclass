@@ -4,6 +4,7 @@ import com.example.todolist.datamodel.TodoItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextArea;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +12,10 @@ import java.util.List;
 
 public class Controller {
     @FXML
-    private ListView todoListView;
+    private ListView<TodoItem> todoListView;
+
+    @FXML
+    private TextArea itemDetailsTextArea;
 
     private List<TodoItem> todoItems;
 
@@ -39,6 +43,15 @@ public class Controller {
 
         todoListView.getItems().setAll(todoItems);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
 
+    @FXML
+    public void handleClickListView() {
+        TodoItem item = todoListView.getSelectionModel().getSelectedItem();
+        StringBuilder sb = new StringBuilder(item.getDetails());
+        sb.append("\n\n\n\n");
+        sb.append("Due: ");
+        sb.append(item.getDeadline().toString());
+        itemDetailsTextArea.setText(sb.toString());
     }
 }

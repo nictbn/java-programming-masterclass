@@ -2,6 +2,7 @@ package com.example.todolist;
 
 import com.example.todolist.datamodel.TodoData;
 import com.example.todolist.datamodel.TodoItem;
+import javafx.application.Platform;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -164,5 +165,10 @@ public class Controller {
             filteredList.setPredicate(wantAllItems);
             todoListView.getSelectionModel().select(selectedItem);
         }
+    }
+
+    @FXML
+    public void handleExit() {
+        Platform.exit();
     }
 }

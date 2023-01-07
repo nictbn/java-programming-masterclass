@@ -16,5 +16,9 @@ public class Main {
         int yearOfBirth = Year.now().getValue() - age;
         System.out.printf("Age = %d, Birth year = %d%n", age, yearOfBirth);
         System.out.printf("Your age is %.2f%n", (float)age);
+
+        for (int i = 1; i <=100000; i *= 10) {
+            System.out.printf("Printing %6d %n", i);
+        }
     }
 }

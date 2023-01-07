@@ -30,4 +30,9 @@ class PrimarySchoolStudent extends Student {
         super(name, age);
         this.parentName = parentName;
     }
+
+    @Override
+    public String toString() {
+        return parentName + "'s kid, " + super.toString();
+    }
 }

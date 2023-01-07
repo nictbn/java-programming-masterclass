@@ -20,5 +20,11 @@ public class Main {
         for (int i = 1; i <=100000; i *= 10) {
             System.out.printf("Printing %6d %n", i);
         }
+
+        String formattedString = String.format("Your age is %d", age);
+        System.out.println(formattedString);
+
+        formattedString = "Your age is %d".formatted(age);
+        System.out.println(formattedString);
     }
 }

@@ -66,6 +66,7 @@ public class Main {
 
         String secondMonth = "OCTOBER";
         System.out.println(secondMonth + " is in the " + getQuarter(secondMonth) + " quarter");
+        System.out.println(secondMonth + " is in the " + getQuarterEnhanced(secondMonth) + " quarter");
     }
 
     public static String getQuarter(String month) {
@@ -88,5 +89,18 @@ public class Main {
                 return "4th";
         }
         return "bad";
+    }
+
+    public static String getQuarterEnhanced(String month) {
+        return switch (month) {
+            case "JANUARY", "FEBRUARY", "MARCH" -> {yield "1st";}
+            case "APRIL", "MAY", "JUNE" -> "2nd";
+            case "JULY", "AUGUST", "SEPTEMBER" -> "3rd";
+            case "OCTOBER", "NOVEMBER", "DECEMBER" -> "4th";
+            default -> {
+                String badResponse = month + " is bad";
+                yield badResponse;
+            }
+        };
     }
 }

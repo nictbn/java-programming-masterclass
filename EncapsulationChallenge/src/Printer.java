@@ -9,7 +9,6 @@ public class Printer {
         } else {
             this.tonerLevel = -1;
         }
-        this.tonerLevel = tonerLevel;
         this.pagesPrinted = 0;
         this.duplex = duplex;
     }

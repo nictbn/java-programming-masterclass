@@ -23,7 +23,7 @@ public class Main {
 //            }
 //            System.out.println();
 //        }
-
+        array2[1] = new int[] {10, 20, 30};
         System.out.println(Arrays.deepToString(array2));
     }
 }

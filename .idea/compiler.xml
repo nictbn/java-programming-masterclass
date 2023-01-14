@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Layouts" />
+        <module name="MusicUI" />
+        <module name="Events" />
+        <module name="MusicUIMigration" />
+        <module name="MyContacts" />
+        <module name="Controls" />
+        <module name="taskExample" />
+        <module name="ButtonFX" />
+        <module name="HelloWorldFx" />
+        <module name="javaFxExtra" />
+        <module name="TodoList" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ButtonFX" target="11" />
+      <module name="Controls" target="11" />
+      <module name="Events" target="11" />
+      <module name="HelloWorldFx" target="11" />
+      <module name="javaFxExtra" target="11" />
+      <module name="Layouts" target="11" />
+      <module name="MusicUI" target="11" />
+      <module name="MusicUIMigration" target="11" />
+      <module name="MyContacts" target="11" />
+      <module name="taskExample" target="11" />
+      <module name="TodoList" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ByteShortIntLong" options="--add-modules java.base" />
+      <module name="HelloWorld" options="--add-modules java.base" />
+      <module name="PrimitiveTypesChallenge" options="--add-modules java.base" />
+    </option>
+  </component>
+</project>
